@@ -27,7 +27,7 @@ loop dd (28 > i)
 end dd
 
 new shtamp number
-set shtamp day + mes + year
+set shtamp day + month + year
 
 delete year
 delete mes
@@ -40,21 +40,21 @@ new y number
 set v TIME - shtamp
 set y 0
 
-loop cc (v > 31557600000) // сколько мне лет
+loop cc (v > 31557600000)
     set v v - 31557600000
     set y y + 1
 end cc
 
-log string "Мне ">>y>>" лет."
+log string "Мне ">> y >>" лет."
 
 loop bb (y > 5)
     set y y - 5
 end bb
 
 if (y > 4)
-  log string "В этом году у меня юбилей :)"
+  log string "юбилей!"
 else
-  log string "В этом году юбилея не будет :("
+  log string "не юбилей"
 close
   
 finish
