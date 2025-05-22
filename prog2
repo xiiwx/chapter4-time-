@@ -1,0 +1,69 @@
+start
+
+new year number
+new i number
+set year 0 
+set i 0
+
+loop while (37 > i) // сколько прошло за 37 лет(до 2007)
+    set year year + 31557600000
+    set i i + 1
+end while
+
+new month number
+set month 0
+set i 0
+loop while (3 > i) // cколько прошло за 3 полных месяца
+   set month month + 2592000000
+   set i i + 1
+end while
+
+new day number
+set day 0
+set i 0
+loop while (28 > i)
+    set day day + 86400000
+    set i i + 1
+end while
+
+new shtamp number
+set shtamp day + month + year
+
+delete year
+delete month
+delete day
+delete i
+
+new v number
+new y number
+new t number
+set t TIME
+set v t - shtamp
+set y 0
+delete t
+loop while (v > 31557600000) // сколько мне лет
+    set v v - 31557600000
+    set y y + 1
+end while
+
+new d number
+loop while (v > 86400000) // сколько мне дней
+    set v v - 86400000
+    set d d + 1
+end while
+
+new p number
+if (d > 30)
+  loop while (d > 30)
+      set d d - 30
+      set p p + 1
+  end while
+  log string "Мне ">>y>>" лет, ">>p>>" месяцев и ">>d>>" дней."
+else
+  if (30 > d)
+     log string "Мне ">>y>>" лет и ">>d>>" дней."
+else
+  log string "Мне ">>y>>" лет и 1 месяц."
+close
+
+finish
