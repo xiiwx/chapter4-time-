@@ -1,0 +1,60 @@
+start
+
+new year number
+new i number
+set year 0 
+set i 0
+
+loop yy (37 > i) // сколько прошло за 37 лет(до 2007)
+    set year year + 31557600000
+    set i i + 1
+end yy
+
+new mes number
+set mes 0
+set i 0
+loop mm (3 > i) // cколько прошло за 3 полных месяца
+   set mes mes + 2592000000
+   set i i + 1
+end mm
+
+new day number
+set day 0
+set i 0
+loop dd (28 > i)
+    set day day + 86400000
+    set i i + 1
+end dd
+
+new shtamp number
+set shtamp day + mes + year
+
+delete year
+delete mes
+delete day
+delete i
+
+new v number
+new y number
+
+set v TIME - shtamp
+set y 0
+
+loop cc (v > 31557600000) // сколько мне лет
+    set v v - 31557600000
+    set y y + 1
+end cc
+
+log string "Мне ">>y>>" лет."
+
+loop bb (y > 5)
+    set y y - 5
+end bb
+
+if (y > 4)
+  log string "В этом году у меня юбилей :)"
+else
+  log string "В этом году юбилея не будет :("
+close
+  
+finish
