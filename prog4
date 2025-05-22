@@ -5,32 +5,23 @@ new i number
 set year 0 
 set i 0
 
-loop yy (37 > i) // сколько прошло за 37 лет(до 2007)
+loop while (37 > i) 
     set year year + 31557600000
     set i i + 1
-end yy
-
-new mes number
-set mes 0
-set i 0
-loop mm (3 > i) // cколько прошло за 3 полных месяца
-   set mes mes + 2592000000
-   set i i + 1
-end mm
+end while
 
 new day number
 set day 0
 set i 0
-loop dd (28 > i)
+loop while (28 > i)
     set day day + 86400000
     set i i + 1
-end dd
+end while
 
 new shtamp number
-set shtamp day + month + year
+set shtamp day + year
 
 delete year
-delete mes
 delete day
 delete i
 
@@ -40,16 +31,16 @@ new y number
 set v TIME - shtamp
 set y 0
 
-loop cc (v > 31557600000)
+loop while (v > 31557600000)
     set v v - 31557600000
     set y y + 1
-end cc
+end while
 
 log string "Мне ">> y >>" лет."
 
-loop bb (y > 5)
+loop while (y > 5)
     set y y - 5
-end bb
+end while
 
 if (y > 4)
   log string "юбилей!"
