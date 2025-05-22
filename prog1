@@ -1,8 +1,28 @@
-start 
-
+start
+new year number
+set year 1970
 new now number
 set now TIME
 
-log number now
+loop while (now > 31557600000)
+    set now now - 31557600000
+    set year year + 1
+end while
 
-end
+new day number
+
+loop while (now > 86400000)
+     set now now - 86400000
+     set day day + 1
+end while
+
+new month number
+set month 1
+loop while (day > 30) 
+     set day day - 30
+     set month month + 1
+end while
+
+log string "год: " >> year >> " месяц: " >> month >> "день: " >> day
+
+finish
